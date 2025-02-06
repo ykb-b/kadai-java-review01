@@ -3,18 +3,20 @@ public class Review01 {
 
     public static void main(String[] args) {
         //本体価格の指定
-        double itemPrice = 1500;
+        int itemPrice = 1500;
+        //消費税額
+        int taxPrice = tax(itemPrice);
         //税込み価格
-        double taxPrice = tax(itemPrice);
-        double tax = taxPrice - itemPrice;
-        System.out.println((int)itemPrice + "円の商品の税込価格は" + (int)taxPrice + "円（消費税は" + (int)tax + "円）です。");
+        int taxInPrice = taxPrice + itemPrice;
+        System.out.println(itemPrice + "円の商品の税込価格は" + taxInPrice + "円（消費税は" + taxPrice + "円）です。");
     }
-    public static double tax(double itemPrice) {
+    public static int tax(int itemPrice) {
         //税率
-        double tax = 1.1;
-        //税込み価格計算
-        double taxPrice = itemPrice * tax;
-        return taxPrice;
+        double taxPer = 1.1;
+        //消費税額計算
+        double tax = itemPrice * taxPer - itemPrice;
+        return (int)tax;
+
     }
 
 }
